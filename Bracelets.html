@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bracelets</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.product{
+    background:white;
+    width:170px;
+    margin:10px;
+    padding:10px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    position:relative;
+}
+
+.product img{
+    width:120px;
+}
+
+.badge{
+    position:absolute;
+    top:5px;
+    right:5px;
+    background:green;
+    color:white;
+    padding:3px 6px;
+    font-size:10px;
+    border-radius:5px;
+}
+
+button{
+    background:black;
+    color:white;
+    border:none;
+    padding:8px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#333;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1> 📿 Bracelets Collection</h1>
+
+<div class="container">
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet1.jpg">
+    <p>Half Crystal</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Half Crystal Bracelet',7000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">NEW</div>
+    <img src="bracelet2.jpg">
+    <p>Butterfly</p>
+    <p>5500 MMK</p>
+    <button onclick="addToCart('Butterfly Bracelet',5500)">➕ Add</button>
+</div>
+
+</div>
+
+<br>
+<a href="cart.html"> 🛒 Go to Cart</a>
+
+<script>
+
+function addToCart(name, price){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        price: price,
+        qty: 1
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added!");
+}
+
+</script>
+
+</body>
+</html>

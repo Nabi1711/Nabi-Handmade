@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+</head>
+
+<body style="font-family:Arial;text-align:center;">
+
+<h1>🧺 Your Cart</h1>
+
+<!-- ❗️ ဒီ 2 ခု MUST -->
+<div id="cart"></div>
+<h2 id="total"></h2>
+
+<button onclick="copyOrder()">📋 Copy Order</button>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart(){
+
+    let html = "";
+    let total = 0;
+
+    if(cart.length === 0){
+        document.getElementById("cart").innerHTML = "🛒 Cart is empty";
+        document.getElementById("total").innerText = "";
+        return;
+    }
+
+    cart.forEach((item, index) => {
+
+        let price = Number(item.price);
+        let qty = Number(item.qty);
+
+        let itemTotal = price * qty;
+        total += itemTotal;
+
+        html += `
+        <p>
+        🛍 ${item.name} <br><br>
+
+        <button onclick="decrease(${index})">-</button>
+        ${qty}
+        <button onclick="increase(${index})">+</button>
+
+        <br>
+        = ${itemTotal} MMK
+        </p>
+        <hr>
+        `;
+    });
+
+    document.getElementById("cart").innerHTML = html;
+    document.getElementById("total").innerText = "Total: " + total + " MMK";
+}
+
+function increase(i){
+    cart[i].qty++;
+    save();
+}
+
+function decrease(i){
+    if(cart[i].qty > 1){
+        cart[i].qty--;
+    }else{
+        cart.splice(i,1);
+    }
+    save();
+}
+
+function save(){
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+// 📋 copy order
+function copyOrder(){
+
+    let text = "🧾 ORDER\n\n";
+    let total = 0;
+
+    cart.forEach(item=>{
+        let sum = item.price * item.qty;
+        total += sum;
+
+        text += item.name + " x " + item.qty + " = " + sum + " MMK\n";
+    });
+
+    text += "\nTOTAL: " + total + " MMK";
+
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+}
+
+renderCart();
+
+</script>
+
+</body>
+</html>
