@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Necklacess</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.product{
+    background:white;
+    width:170px;
+    margin:10px;
+    padding:10px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    position:relative;
+}
+
+.product img{
+    width:120px;
+}
+
+.badge{
+    position:absolute;
+    top:5px;
+    right:5px;
+    background:green;
+    color:white;
+    padding:3px 6px;
+    font-size:10px;
+    border-radius:5px;
+}
+
+button{
+    background:black;
+    color:white;
+    border:none;
+    padding:8px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#333;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1> 📿 Necklaces Collection</h1>
+
+<div class="container">
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace1.jpg">
+    <p>Maple Leaf</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Maple Leaf',7500)">➕ Add</button>
+</div>
+    
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace2.jpg">
+    <p>Half Moon</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Half Moon',7000)">➕ Add</button>
+</div>
+
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace3.jpg">
+    <p>Leaf Necklace</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Leaf Necklace',7000)">➕ Add</button>
+</div>
+
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace4.jpg">
+    <p>Butterfly Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Butterfly',7500)">➕ Add</button>
+</div>
+
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace5.jpg">
+    <p>Starfish Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Starfish Necklace',7500)">➕ Add</button>
+</div>
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace6.jpg">
+    <p>Mermaid Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Mermaid Necklace',7500)">➕ Add</button>
+</div>
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace7.jpg">
+    <p>Star Necklace</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Star Necklace',7000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace8.jpg">
+    <p>Fairy Necklace 1</p>
+    <p>18000 MMK</p>
+    <button onclick="addToCart('Faiy Necklace 1',18000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace9.jpg">
+    <p>Fairy Necklace 2</p>
+    <p>18000 MMK</p>
+    <button onclick="addToCart('Fairy Necklace 2',18000)">➕ Add</button>
+</div>
+
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace10.jpg">
+    <p>Fairy Necklace 3</p>
+    <p>18000 MMK</p>
+    <button onclick="addToCart('Fairy Necklace 3',18000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet11.jpg">
+    <p>Fairy Bracelet 10</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 10',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet12.jpg">
+    <p>Fairy Bracelet 11</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 11',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet13.jpg">
+    <p>Fairy Bracelet 12</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 12',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet14.jpg">
+    <p>Fairy Bracelet 13</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 13',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet15.jpg">
+    <p>Fairy Bracelet 14</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 14',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet16.jpg">
+    <p>Fairy Bracelet 15</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 15',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet17.jpg">
+    <p>Fairy Bracelet 16</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 17',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet18.jpg">
+    <p>Fairy Bracelet 17</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 17',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet19.jpg">
+    <p>Fairy Bracelet 18</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 18',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet20.jpg">
+    <p>Fairy Bracelet 19</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 19',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet21.jpg">
+    <p>Fairy Bracelet 20</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 20',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet22.jpg">
+    <p>Fairy Bracelet 21</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 21',13000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet24.jpg">
+    <p>Fairy Bracelet 23</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 23',13000)">➕ Add</button>
+</div>
+    
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="bracelet23.jpg">
+    <p>Fairy Bracelet 22</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Fairy Bracelet 22',13000)">➕ Add</button>
+</div>
+    
+<div class="product">
+    <div class="badge">NEW</div>
+    <img src="bracelet2.jpg">
+    <p>Butterfly</p>
+    <p>5500 MMK</p>
+    <button onclick="addToCart('Butterfly Bracelet',5500)">➕ Add</button>
+</div>
+
+</div>
+
+<br>
+<a href="cart.html"> 🛒 Go to Cart</a>
+
+<script>
+
+function addToCart(name, price){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        price: price,
+        qty: 1
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added!");
+}
+
+</script>
+
+</body>
+</html>
