@@ -123,7 +123,6 @@ button:hover{
     display:inline-block;
 }
 
-/* 🔍 LIGHTBOX ZOOM */
 #lightbox{
     display:none;
     position:fixed;
@@ -138,7 +137,8 @@ button:hover{
 }
 
 #lightbox img{
-    width:300px;
+    width:90%;
+    max-width:400px;
     border-radius:10px;
 }
 
@@ -176,3 +176,5 @@ button:hover{
         margin-top:5px;
     }
 }
+
+document.getElementById("lightbox").style.display = "flex";
