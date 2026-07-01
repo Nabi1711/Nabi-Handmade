@@ -1,5 +1,5 @@
 /* 🌸 GLOBAL RESET */
-body{
+body{height:100%
     font-family: Arial, sans-serif;
     text-align:center;
     margin:0;
@@ -170,6 +170,7 @@ button:hover{
         width:70%;
         height:auto;
     }
+
 
     button{
         width:100%;
