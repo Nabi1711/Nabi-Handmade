@@ -295,8 +295,6 @@ function addToCart(name, price){
     alert("Added!");
 }
 
-</script>
-<script>
 function openZoom(img){
     document.getElementById("lightbox").style.display="flex";
     document.getElementById("lightboxImg").src = img.src;
@@ -306,5 +304,9 @@ function closeZoom(){
     document.getElementById("lightbox").style.display="none";
 }
 </script>
+
+    <div id="lightbox" onclick="closeZoom()">
+    <img id="lightboxImg">
+</div>
 </body>
 </html>
