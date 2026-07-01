@@ -12,7 +12,10 @@ body{height:100%
     width:120px;
     margin-top:20px;
 }
-
+.logo-text{
+    font-size:30px;
+    margin:20px;
+}
 /* 🧱 CONTAINER */
 .container{
     display:flex;
@@ -36,7 +39,7 @@ body{height:100%
 }
 
 .card:hover{
-    transform:scale(1.05);
+    transform:scale(1.08);
     box-shadow:0 6px 18px rgba(0,0,0,0.2);
 }
 
@@ -147,7 +150,7 @@ button:hover{
 
 /* 📱 MOBILE RESPONSIVE */
 @media (max-width:768px){
-
+.shop-title{font-size:22px;}
     h1{
         font-size:22px;
     }
@@ -169,8 +172,17 @@ button:hover{
     
 
     .product{
-        width:90%;
-    }
+    background:white;
+    width:180px;
+    padding:12px;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+}
 
     .product img{
         width:70%;
@@ -185,3 +197,15 @@ button:hover{
 }
 
 document.getElementById("lightbox").style.display = "flex";
+
+.cart-fixed{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:black;
+    color:white;
+    padding:12px 15px;
+    border-radius:50px;
+    text-decoration:none;
+    z-index:9999;
+}
