@@ -1,5 +1,5 @@
 /* 🌸 GLOBAL RESET */
-body{height:100%
+body{height:100%;
     font-family: Arial, sans-serif;
     text-align:center;
     margin:0;
@@ -108,7 +108,7 @@ button:hover{
 }
 
 /* 🛒 CART LINK */
-.cart-btn, a{
+.cart-btn, {
     display:inline-block;
     margin-top:10px;
     padding:8px 12px;
@@ -206,5 +206,5 @@ button:hover{
     padding:12px 15px;
     border-radius:50px;
     text-decoration:none;
-    z-index:9999;
+    z-index:99999;
 }
