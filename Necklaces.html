@@ -320,7 +320,13 @@ button:hover{
 </div>
 
 <br>
-<a href="cart.html"> 🛒 Go to Cart</a>
+    
+<a href="cart.html" class="cart-fixed">🛒 Go to Cart</a>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeZoom()">
+    <img id="lightboxImg">
+</div>
 
 <script>
 
@@ -337,6 +343,15 @@ function addToCart(name, price){
     localStorage.setItem("cart", JSON.stringify(cart));
 
     alert("Added!");
+}
+
+function openZoom(img){
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightboxImg").src = img.src;
+}
+
+function closeZoom(){
+    document.getElementById("lightbox").style.display = "none";
 }
 
 </script>
