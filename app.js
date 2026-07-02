@@ -4,6 +4,7 @@
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+/* ➕ ADD TO CART */
 function addToCart(name, price){
 
     let found = cart.find(item => item.name === name);
@@ -18,14 +19,14 @@ function addToCart(name, price){
         });
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    saveCart();
 
     alert("🛒 Added: " + name);
 }
 
 
 /* =========================
-   🧺 CART PAGE RENDER
+   🧺 CART RENDER
 ========================= */
 
 function renderCart(){
@@ -33,7 +34,7 @@ function renderCart(){
     let container = document.getElementById("cart");
     let totalBox = document.getElementById("total");
 
-    if(!container) return;
+    if(!container || !totalBox) return;
 
     let html = "";
     let total = 0;
@@ -62,11 +63,14 @@ function renderCart(){
     totalBox.innerText = "Total: " + total + " MMK";
 }
 
+
+/* ➕ INCREASE */
 function increase(i){
     cart[i].qty++;
     saveCart();
 }
 
+/* ➖ DECREASE */
 function decrease(i){
     if(cart[i].qty > 1){
         cart[i].qty--;
@@ -76,6 +80,8 @@ function decrease(i){
     saveCart();
 }
 
+
+/* 💾 SAVE CART */
 function saveCart(){
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
@@ -96,7 +102,7 @@ function openZoom(img){
     lightbox.style.display = "flex";
     lightboxImg.src = img.src;
 
-    // background scroll stop
+    // stop scroll
     document.body.style.overflow = "hidden";
 }
 
@@ -113,7 +119,7 @@ function closeZoom(){
 
 
 /* =========================
-   🧠 AUTO INIT
+   🚀 INIT
 ========================= */
 
 renderCart();
