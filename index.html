@@ -2,58 +2,172 @@
 <html>
 <head>
     <title>Nabi Handmade Studio</title>
-    
-<link rel="stylesheet" href="style.css">
 
+    <link rel="stylesheet" href="style.css">
 
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            text-align:center;
+
+            /* 🌸 fairy background */
+            background: linear-gradient(135deg, #ffe6f0, #fff6e6);
+            position:relative;
+            overflow-x:hidden;
+        }
+
+        /* ✨ soft floating glow circles */
+        body::before,
+        body::after{
+            content:"";
+            position:fixed;
+            width:300px;
+            height:300px;
+            background:rgba(255,182,193,0.3);
+            border-radius:50%;
+            filter:blur(80px);
+            z-index:-1;
+        }
+
+        body::before{
+            top:-50px;
+            left:-50px;
+        }
+
+        body::after{
+            bottom:-80px;
+            right:-80px;
+            background:rgba(255,223,186,0.3);
+        }
+
+        /* 🔥 logo */
+        .logo{
+            width:160px;
+            margin-top:25px;
+            border-radius:20px;
+        }
+
+        h1{
+            margin:10px 0;
+            font-size:28px;
+        }
+
+        h2{
+            margin-top:20px;
+            font-size:20px;
+            color:#444;
+        }
+
+        /* 🧱 container */
+        .container{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:15px;
+            margin-top:20px;
+            padding:10px;
+        }
+
+        /* 💎 card */
+        .card{
+            width:150px;
+            background:rgba(255,255,255,0.85);
+            backdrop-filter: blur(6px);
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+            transition:0.3s;
+            text-decoration:none;
+            color:black;
+        }
+
+        .card:hover{
+            transform:scale(1.05);
+        }
+
+        .card img{
+            width:100%;
+            height:120px;
+            object-fit:cover;
+        }
+
+        .card p{
+            margin:8px 0;
+            font-weight:bold;
+        }
+
+        /* 🛒 button */
+        .cart-btn{
+            display:inline-block;
+            margin:25px 0;
+            padding:12px 18px;
+            background:black;
+            color:white;
+            border-radius:30px;
+            text-decoration:none;
+        }
+
+        /* 📱 mobile */
+        @media(max-width:768px){
+            .card{
+                width:45%;
+            }
+
+            .logo{
+                width:140px;
+            }
+
+            h1{
+                font-size:22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- 🔥 LOGO -->
-<img src="logo.png" class="logo">
+    <!-- 🔥 LOGO -->
+    <img src="logo.png" class="logo">
 
-<h1> 💖 Nabi Handmade Studio</h1>
+    <h1>💖 Nabi Handmade Studio</h1>
+    <h2>✨ Categories</h2>
 
-<h2>✨ Categories</h2>
+    <div class="container">
 
-<div class="container">
+        <a href="bracelets.html" class="card">
+            <img src="bracelets-cat.jpg">
+            <p>Bracelets</p>
+        </a>
 
-    <a href="Bracelets.html" class="card">
-        <img src="bracelets-cat.jpg">
-        <p> 💖 Bracelets</p>
-    </a>
+        <a href="necklaces.html" class="card">
+            <img src="necklaces-cat.jpg">
+            <p>Necklaces</p>
+        </a>
 
-    <a href="Necklaces.html" class="card">
-        <img src="necklaces-cat.jpg">
-        <p> 💖 Necklaces</p>
-    </a>
+        <a href="rings.html" class="card">
+            <img src="rings-cat.jpg">
+            <p>Rings</p>
+        </a>
 
-<a href="Rings.html" class="card">
-        <img src="rings-cat.jpg">
-        <p> 💖 Rings</p>
-    </a>
-    
-    <a href="Keychains.html" class="card">
-        <img src="keychains-cat.jpg">
-        <p> 💖 Keychains</p>
-    </a>
+        <a href="keychains.html" class="card">
+            <img src="keychains-cat.jpg">
+            <p>Keychains</p>
+        </a>
 
-    <a href="Earrings.html" class="card">
-        <img src="earrings-cat.jpg">
-        <p> 💖 Earrings</p>
-    </a>
+        <a href="earrings.html" class="card">
+            <img src="earrings-cat.jpg">
+            <p>Earrings</p>
+        </a>
 
-<a href="Others.html" class="card">
-        <img src="others-cat.jpg">
-        <p> 💖 Others</p>
-    </a>
-    
-</div>
+        <a href="others.html" class="card">
+            <img src="others-cat.jpg">
+            <p>Others</p>
+        </a>
 
-<br>
+    </div>
 
-<a href="cart.html" class="cart-btn">🛒 Go to Cart</a>
+    <a href="cart.html" class="cart-btn">🛒 Go to Cart</a>
 
 </body>
 </html>
