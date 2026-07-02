@@ -11,6 +11,7 @@ body{
     position:relative;
 }
 
+
 /* ✨ fairy glow */
 body::before,
 body::after{
@@ -30,11 +31,13 @@ body::before{
     left:-50px;
 }
 
+
 body::after{
     background:peachpuff;
     bottom:-50px;
     right:-50px;
 }
+
 
 /* 🔥 LOGO */
 .logo{
@@ -46,6 +49,7 @@ body::after{
     font-size:30px;
     margin:20px;
 }
+
 
 /* 🧱 CONTAINER */
 .container{
@@ -136,6 +140,7 @@ button:hover{
     z-index:99999;
 }
 
+
 /* 💫 LIGHTBOX */
 #lightbox{
     display:none;
@@ -149,6 +154,7 @@ button:hover{
     align-items:center;
     z-index:99999;
 }
+
 
 #lightbox img{
     max-width:90%;
