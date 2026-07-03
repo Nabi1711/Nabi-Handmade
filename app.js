@@ -21,6 +21,8 @@ function addToCart(name, price){
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
+
+    alert("Added to Cart!");
 }
 
 /* ================= UPDATE CART COUNT ================= */
@@ -39,12 +41,12 @@ function updateCartCount(){
     }
 }
 
-/* ================= RUN ON PAGE LOAD ================= */
+/* ================= INIT ================= */
 document.addEventListener("DOMContentLoaded", function(){
     updateCartCount();
 });
 
-/* ================= OPTIONAL: REALTIME SYNC ================= */
+/* ================= SYNC ACROSS PAGES ================= */
 window.addEventListener("storage", function(){
     updateCartCount();
 });
