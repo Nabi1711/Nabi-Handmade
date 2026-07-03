@@ -20,7 +20,15 @@ function addToCart(name, price){
     alert("Added: " + name);
 }
 
-/* 🧺 CART RENDER */
+
+let cartCount = 0;
+
+function addToCart(){
+    cartCount++;
+    document.getElementById("cart-count").innerText = cartCount;
+}
+
+/* 🛒 CART RENDER */
 function renderCart(){
 
     let container = document.getElementById("cart");
