@@ -2,23 +2,88 @@
 <html>
 <head>
     <title>Cart</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            text-align:center;
+            margin:0;
+            background:linear-gradient(135deg,#ffe6f0,#fff6e6);
+        }
+
+        h1{
+            margin-top:20px;
+        }
+
+        .box{
+            max-width:700px;
+            margin:20px auto;
+        }
+
+        .item{
+            background:white;
+            margin:10px;
+            padding:15px;
+            border-radius:12px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .btn{
+            padding:5px 10px;
+            border:none;
+            background:black;
+            color:white;
+            border-radius:6px;
+            cursor:pointer;
+        }
+
+        #total{
+            font-size:18px;
+            font-weight:bold;
+            margin-top:20px;
+        }
+
+        .copy-btn{
+            margin-top:20px;
+            padding:10px 20px;
+            border:none;
+            background:linear-gradient(45deg,#ff69b4,#ffa6c9);
+            color:white;
+            border-radius:10px;
+            cursor:pointer;
+        }
+    </style>
 </head>
 
-<body style="font-family:Arial;text-align:center;">
+<body>
 
 <h1>🛒 Your Cart</h1>
 
-<div id="cart"></div>
-<h2 id="total"></h2>
+<div class="box" id="cart"></div>
 
-<button onclick="copyOrder()">📋 Copy Order</button>
+<div id="total"></div>
+
+<button class="copy-btn" onclick="copyOrder()">📋 Copy Order</button>
 
 <script>
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+/* ================= LOAD CART ================= */
+function getCart(){
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
 
-/* ================= CART RENDER ================= */
+/* ================= SAVE CART ================= */
+function saveCart(cart){
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+/* ================= RENDER ================= */
 function renderCart(){
+
+    let cart = getCart();
 
     let html = "";
     let total = 0;
@@ -29,26 +94,33 @@ function renderCart(){
         return;
     }
 
-    cart.forEach((item, index) => {
+    cart.forEach((item,index)=>{
 
-        let price = Number(item.price);
-        let qty = Number(item.qty);
+        let price = Number(item.price || 0);
+        let qty = Number(item.qty || 0);
 
-        let itemTotal = price * qty;
-        total += itemTotal;
+        let sum = price * qty;
+        total += sum;
 
         html += `
-        <p>
-        🛍 ${item.name} <br><br>
+        <div class="item">
 
-        <button onclick="decrease(${index})">-</button>
-        ${qty}
-        <button onclick="increase(${index})">+</button>
+            <div>
+                🛍 ${item.name}<br>
+                <small>${price} MMK</small>
+            </div>
 
-        <br>
-        = ${itemTotal} MMK
-        </p>
-        <hr>
+            <div>
+                <button class="btn" onclick="dec(${index})">-</button>
+                ${qty}
+                <button class="btn" onclick="inc(${index})">+</button>
+            </div>
+
+            <div>
+                ${sum} MMK
+            </div>
+
+        </div>
         `;
     });
 
@@ -56,45 +128,60 @@ function renderCart(){
     document.getElementById("total").innerText = "Total: " + total + " MMK";
 }
 
-/* ================= UPDATE ================= */
-function increase(i){
+/* ================= INCREASE ================= */
+function inc(i){
+    let cart = getCart();
     cart[i].qty++;
-    save();
+    saveCart(cart);
+    renderCart();
 }
 
-function decrease(i){
+/* ================= DECREASE ================= */
+function dec(i){
+    let cart = getCart();
+
     if(cart[i].qty > 1){
         cart[i].qty--;
     }else{
         cart.splice(i,1);
     }
-    save();
-}
 
-function save(){
-    localStorage.setItem("cart", JSON.stringify(cart));
+    saveCart(cart);
     renderCart();
 }
 
 /* ================= COPY ORDER ================= */
 function copyOrder(){
 
+    let cart = getCart();
+
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+
     let text = "🧾 ORDER\n\n";
     let total = 0;
 
     cart.forEach(item=>{
-        let sum = item.price * item.qty;
+
+        let price = Number(item.price || 0);
+        let qty = Number(item.qty || 0);
+
+        let sum = price * qty;
         total += sum;
 
-        text += item.name + " x " + item.qty + " = " + sum + " MMK\n";
+        text += ${item.name} x${qty} = ${sum} MMK\n;
     });
 
-    text += "\nTOTAL: " + total + " MMK";
+    text += \nTOTAL: ${total} MMK;
 
-    navigator.clipboard.writeText(text);
-    alert("Copied!");
+    navigator.clipboard.writeText(text)
+    .then(()=> alert("Copied!"))
+    .catch(()=> alert("Copy failed"));
 }
 
+/* ================= INIT ================= */
 renderCart();
 
 </script>
