@@ -15,7 +15,7 @@ function addToCart(name, price){
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartCount(); // instant update
+    updateCartCount();
 }
 
 /* ================= CART COUNT ================= */
@@ -30,10 +30,9 @@ function updateCartCount(){
     });
 }
 
-/* run on page load */
 updateCartCount();
 
-
+/* ================= COPY ORDER ================= */
 function copyOrder(){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -59,7 +58,6 @@ function copyOrder(){
 
     text += \nTOTAL: ${total} MMK;
 
-    /* SAFE COPY METHOD */
     if(navigator.clipboard && window.isSecureContext){
         navigator.clipboard.writeText(text)
         .then(()=> alert("Copied!"))
@@ -69,7 +67,7 @@ function copyOrder(){
     }
 }
 
-/* fallback for mobile */
+/* fallback */
 function fallbackCopy(text){
     let textarea = document.createElement("textarea");
     textarea.value = text;
