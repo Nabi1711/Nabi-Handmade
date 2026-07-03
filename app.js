@@ -1,6 +1,6 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ADD */
+/* ================= ADD ================= */
 function addToCart(name, price){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -10,7 +10,11 @@ function addToCart(name, price){
     if(found){
         found.qty++;
     }else{
-        cart.push({name, price:Number(price), qty:1});
+        cart.push({
+            name,
+            price: Number(price),
+            qty: 1
+        });
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -18,21 +22,25 @@ function addToCart(name, price){
     updateCartCount();
 }
 
-/* COUNT */
+/* ================= COUNT ================= */
 function updateCartCount(){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let count = cart.reduce((s,i)=> s + (i.qty || 0), 0);
+    let count = cart.reduce((s,i)=>{
+        return s + (i.qty || 0);
+    }, 0);
 
     let el = document.getElementById("cart-count");
 
     if(el) el.innerText = count;
 }
 
-/* RUN ON LOAD */
-updateCartCount();
+/* ================= INIT ================= */
+document.addEventListener("DOMContentLoaded", ()=>{
+    updateCartCount();
+});
 
-/* FIX REALTIME BETWEEN PAGES */
+/* ================= CROSS PAGE SYNC ================= */
 window.addEventListener("storage", updateCartCount);
 window.addEventListener("focus", updateCartCount);
