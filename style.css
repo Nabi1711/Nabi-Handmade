@@ -1,18 +1,12 @@
-/* 🌸 GLOBAL RESET */
+/* 🌸 BASE */
 body{
-    height:100%;
+    margin:0;
     font-family: Arial, sans-serif;
     text-align:center;
-    margin:0;
-    padding:0;
-
-    background: linear-gradient(135deg, #ffe6f0, #fff6e6);
-    overflow-x:hidden;
-    position:relative;
+    background: linear-gradient(135deg,#ffe6f0,#fff6e6);
 }
 
-
-/* ✨ fairy glow */
+/* ✨ soft glow background */
 body::before,
 body::after{
     content:"";
@@ -20,9 +14,9 @@ body::after{
     width:300px;
     height:300px;
     border-radius:50%;
-    filter:blur(90px);
+    filter:blur(100px);
+    opacity:0.3;
     z-index:-1;
-    opacity:0.4;
 }
 
 body::before{
@@ -31,77 +25,64 @@ body::before{
     left:-50px;
 }
 
-
 body::after{
     background:peachpuff;
     bottom:-50px;
     right:-50px;
 }
 
-
-/* 🔥 LOGO */
-.logo{
-    width:120px;
-    margin-top:20px;
-}
-
-.logo-text{
-    font-size:30px;
-    margin:20px;
-}
-
-
-/* 🧱 CONTAINER */
+/* 🧱 container */
 .container{
     display:flex;
-    justify-content:center;
     flex-wrap:wrap;
+    justify-content:center;
     gap:15px;
     margin-top:20px;
 }
 
-/* 💎 CATEGORY CARD */
+/* 💎 cards */
 .card{
-    width:220px;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(8px);
+    width:200px;
+    background:rgba(255,255,255,0.85);
     border-radius:15px;
     overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    transition:0.3s;
     text-decoration:none;
     color:black;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:0.3s;
 }
 
 .card:hover{
-    transform:scale(1.07);
+    transform:scale(1.05);
 }
 
-/* 🛍 PRODUCT */
+/* images */
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+/* 🛍 product */
 .product{
-    background:white;
     width:170px;
+    background:white;
     margin:10px;
     padding:10px;
-    border-radius:15px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.1);
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
     position:relative;
 }
 
-/* 🖼 IMAGE */
 .product img{
     width:130px;
     height:130px;
     object-fit:cover;
-    border-radius:10px;
+    border-radius:8px;
     cursor:pointer;
 }
 
-.product img:hover{
-    transform:scale(1.05);
-}
-
-/* 🟢 BADGE */
+/* badge */
 .badge{
     position:absolute;
     top:5px;
@@ -113,7 +94,7 @@ body::after{
     border-radius:10px;
 }
 
-/* 🔘 BUTTON */
+/* button */
 button{
     background:black;
     color:white;
@@ -123,11 +104,7 @@ button{
     cursor:pointer;
 }
 
-button:hover{
-    background:#333;
-}
-
-/* 🛒 CART */
+/* cart button */
 .cart-fixed{
     position:fixed;
     bottom:20px;
@@ -137,11 +114,9 @@ button:hover{
     padding:12px 15px;
     border-radius:50px;
     text-decoration:none;
-    z-index:99999;
 }
 
-
-/* 💫 LIGHTBOX */
+/* lightbox */
 #lightbox{
     display:none;
     position:fixed;
@@ -152,12 +127,22 @@ button:hover{
     background:rgba(0,0,0,0.85);
     justify-content:center;
     align-items:center;
-    z-index:99999;
 }
-
 
 #lightbox img{
     max-width:90%;
     max-height:90%;
-    border-radius:12px;
+    border-radius:10px;
+}
+
+/* 📱 mobile */
+@media(max-width:768px){
+    .container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card,.product{
+        width:90%;
+    }
 }
