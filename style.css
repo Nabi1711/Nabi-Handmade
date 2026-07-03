@@ -9,7 +9,7 @@ body{
 .logo{
     width:80px !important;
     height:auto;
-    animation:glow2s infinite alternate;
+    animation:glow 2s infinite alternate;
     margin-bottom:10px ;
 }
 
@@ -154,7 +154,7 @@ box-shadow:0 4px 12px rgba (0,0,0,0.3);
         align-items:center;
     }
 .logo{
-        width:100px;
+        width:90px;
     }
     .card,.product{
         width:90%;
