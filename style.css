@@ -7,8 +7,10 @@ body{
 }
 /* 🔥 LOGO */
 .logo{
-    width:120px;
-    margin-top:20px;
+    width:60px;
+    height:auto;
+    display:block;
+    margin:20px auto;
 }
 
 /* ✨ soft glow background */
