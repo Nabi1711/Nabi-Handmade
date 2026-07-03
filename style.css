@@ -60,7 +60,8 @@ body::after{
 }
 
 .card:hover{
-    transform:scale(1.05);
+    transform:scale(1.06);
+    box-shadow:0 10px  25px rgba(0,0,0,0.15);
 }
 
 /* images */
@@ -116,7 +117,8 @@ button{
     position:fixed;
     bottom:20px;
     right:20px;
-    background:black;
+    background:linear-gradient(45deg,#000,#333);
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
     color:white;
     padding:12px 15px;
     border-radius:50px;
@@ -152,4 +154,20 @@ button{
     .card,.product{
         width:90%;
     }
+}
+
+/* 🌟 HERO SECTION */
+.hero{
+    margin-top:10px;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:22px;
+    color:#444;
+}
+
+.hero p{
+    font-size:14px;
+    color:#888;
 }
