@@ -1,80 +1,32 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+<body>
 
-/* ================= ADD TO CART ================= */
-function addToCart(name, price){
+    <div class="hero">
+        <div class="hero-box">
+            <img src="logo.png" class="logo">
+            <h1>Nabi Handmade Studio</h1>
+        </div>
+    </div>
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    <div class="container">
+        ...
+    </div>
 
-    let found = cart.find(item => item.name === name);
+    <a href="cart.html" class="cart-fixed">
+        🛒 Cart <span id="cart-count">0</span>
+    </a>
 
-    if(found){
-        found.qty++;
-    }else{
-        cart.push({name, price, qty:1});
-    }
+    <script src="app.js"></script>
+</body>
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    updateCartCount();
-}
-
-/* ================= CART COUNT ================= */
 function updateCartCount(){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let count = cart.reduce((sum,item)=> sum + (item.qty || 0), 0);
+    let count = cart.reduce((sum,item)=> sum + item.qty, 0);
 
-    document.querySelectorAll("#cart-count").forEach(el=>{
-        el.innerText = count;
-    });
-}
+    let el = document.getElementById("cart-count");
 
-updateCartCount();
+    if(!el) return;   // 🔥 IMPORTANT SAFETY
 
-/* ================= COPY ORDER ================= */
-function copyOrder(){
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    if(cart.length === 0){
-        alert("Cart is empty!");
-        return;
-    }
-
-    let text = "🧾 ORDER\n\n";
-    let total = 0;
-
-    cart.forEach(item=>{
-
-        let price = Number(item.price || 0);
-        let qty = Number(item.qty || 0);
-
-        let sum = price * qty;
-        total += sum;
-
-        text += ${item.name} x${qty} = ${sum} MMK\n;
-    });
-
-    text += \nTOTAL: ${total} MMK;
-
-    if(navigator.clipboard && window.isSecureContext){
-        navigator.clipboard.writeText(text)
-        .then(()=> alert("Copied!"))
-        .catch(()=> fallbackCopy(text));
-    }else{
-        fallbackCopy(text);
-    }
-}
-
-/* fallback */
-function fallbackCopy(text){
-    let textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-
-    alert("Copied!");
+    el.innerText = count;
 }
