@@ -1,10 +1,6 @@
-/* =========================
-   🛒 CART SYSTEM
-========================= */
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ➕ ADD TO CART */
+/* 🛒 ADD TO CART */
 function addToCart(name, price){
 
     let found = cart.find(item => item.name === name);
@@ -13,49 +9,41 @@ function addToCart(name, price){
         found.qty += 1;
     }else{
         cart.push({
-            name: name,
-            price: price,
-            qty: 1
+            name:name,
+            price:price,
+            qty:1
         });
     }
 
-    saveCart();
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-    alert("🛒 Added: " + name);
+    alert("Added: " + name);
 }
 
-
-/* =========================
-   🧺 CART RENDER
-========================= */
-
+/* 🧺 CART RENDER */
 function renderCart(){
 
     let container = document.getElementById("cart");
     let totalBox = document.getElementById("total");
 
-    if(!container || !totalBox) return;
+    if(!container) return;
 
     let html = "";
     let total = 0;
 
-    cart.forEach((item, index) => {
-
-        let itemTotal = item.price * item.qty;
-        total += itemTotal;
+    cart.forEach((item,i)=>{
+        let sum = item.price * item.qty;
+        total += sum;
 
         html += `
         <p>
-            🛍 ${item.name} <br><br>
-
-            <button onclick="decrease(${index})">-</button>
-            ${item.qty}
-            <button onclick="increase(${index})">+</button>
-
-            <br><br>
-            = ${itemTotal} MMK
+        ${item.name}<br>
+        <button onclick="decrease(${i})">-</button>
+        ${item.qty}
+        <button onclick="increase(${i})">+</button>
+        <br>
+        ${sum} MMK
         </p>
-        <hr>
         `;
     });
 
@@ -63,14 +51,12 @@ function renderCart(){
     totalBox.innerText = "Total: " + total + " MMK";
 }
 
-
-/* ➕ INCREASE */
+/* qty */
 function increase(i){
     cart[i].qty++;
     saveCart();
 }
 
-/* ➖ DECREASE */
 function decrease(i){
     if(cart[i].qty > 1){
         cart[i].qty--;
@@ -80,46 +66,20 @@ function decrease(i){
     saveCart();
 }
 
-
-/* 💾 SAVE CART */
 function saveCart(){
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
 }
 
-
-/* =========================
-   🔍 LIGHTBOX ZOOM
-========================= */
-
+/* 🔍 LIGHTBOX */
 function openZoom(img){
-
-    let lightbox = document.getElementById("lightbox");
-    let lightboxImg = document.getElementById("lightboxImg");
-
-    if(!lightbox || !lightboxImg) return;
-
-    lightbox.style.display = "flex";
-    lightboxImg.src = img.src;
-
-    // stop scroll
-    document.body.style.overflow = "hidden";
+    document.getElementById("lightbox").style.display="flex";
+    document.getElementById("lightboxImg").src = img.src;
 }
 
 function closeZoom(){
-
-    let lightbox = document.getElementById("lightbox");
-
-    if(lightbox){
-        lightbox.style.display = "none";
-    }
-
-    document.body.style.overflow = "auto";
+    document.getElementById("lightbox").style.display="none";
 }
 
-
-/* =========================
-   🚀 INIT
-========================= */
-
+/* init */
 renderCart();
