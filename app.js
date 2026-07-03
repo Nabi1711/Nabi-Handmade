@@ -29,6 +29,25 @@ function addToCart(){
 }
 
 /* 🛒 CART RENDER */
+
+function updateCartCount(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let count = 0;
+
+    cart.forEach(item=>{
+        count += item.qty;
+    });
+
+    let el = document.getElementById("cart-count");
+    if(el){
+        el.innerText = count;
+    }
+}
+
+updateCartCount();
+
 function renderCart(){
 
     let container = document.getElementById("cart");
