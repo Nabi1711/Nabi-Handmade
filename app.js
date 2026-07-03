@@ -1,6 +1,6 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* 🛒 ADD TO CART */
+/* 🛒 ADD TO CART (MAIN FUNCTION) */
 function addToCart(name, price){
 
     let found = cart.find(item => item.name === name);
@@ -17,26 +17,17 @@ function addToCart(name, price){
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    alert("Added: " + name);
+    updateCartCount();   // 🔥 IMPORTANT
 }
 
-
-let cartCount = 0;
-
-function addToCart(){
-    cartCount++;
-    document.getElementById("cart-count").innerText = cartCount;
-}
-
-/* 🛒 CART RENDER */
-
+/* 🛒 UPDATE CART COUNT */
 function updateCartCount(){
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartData = JSON.parse(localStorage.getItem("cart")) || [];
 
     let count = 0;
 
-    cart.forEach(item=>{
+    cartData.forEach(item=>{
         count += item.qty;
     });
 
@@ -46,8 +37,7 @@ function updateCartCount(){
     }
 }
 
-updateCartCount();
-
+/* 🛒 CART RENDER */
 function renderCart(){
 
     let container = document.getElementById("cart");
@@ -78,7 +68,7 @@ function renderCart(){
     totalBox.innerText = "Total: " + total + " MMK";
 }
 
-/* qty */
+/* ➕ ➖ QTY */
 function increase(i){
     cart[i].qty++;
     saveCart();
@@ -96,6 +86,7 @@ function decrease(i){
 function saveCart(){
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
+    updateCartCount();
 }
 
 /* 🔍 LIGHTBOX */
@@ -108,5 +99,6 @@ function closeZoom(){
     document.getElementById("lightbox").style.display="none";
 }
 
-/* init */
+/* 🚀 INIT */
+updateCartCount();
 renderCart();
