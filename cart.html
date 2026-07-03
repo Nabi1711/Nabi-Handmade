@@ -148,10 +148,18 @@ function save(){
 /* ================= COPY ORDER ================= */
 function copyOrder(){
 
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+
     let text = "🧾 ORDER\n\n";
     let total = 0;
 
     cart.forEach(item=>{
+
         let price = Number(item.price || 0);
         let qty = Number(item.qty || 0);
 
@@ -161,10 +169,12 @@ function copyOrder(){
         text += ${item.name} x${qty} = ${sum} MMK\n;
     });
 
-    text += "\nTOTAL: " + total + " MMK";
+    text += \nTOTAL: ${total} MMK;
 
-    navigator.clipboard.writeText(text);
-    alert("Copied!");
+    navigator.clipboard.writeText(text)
+    .then(()=> alert("Copied!"))
+    .catch(()=> alert("Copy failed"));
+
 }
 
 renderCart();
