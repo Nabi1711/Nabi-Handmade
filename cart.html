@@ -90,7 +90,7 @@
 
 <div class="cart-container">
 
-    <div class="cart-header">🧾 Fairy Order Voucher</div>
+    <div class="cart-header">🧾Order Voucher</div>
 
     <div id="cart"></div>
 
@@ -104,35 +104,40 @@
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ================= RENDER ================= */
+/* ================= SAFE RENDER ================= */
 function renderCart(){
+
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     let html = "";
     let total = 0;
 
     if(cart.length === 0){
         document.getElementById("cart").innerHTML =
-        "<div class='empty'>🛒 Cart is empty</div>";
+        "<div style='padding:20px'>🛒 Cart is empty</div>";
         document.getElementById("total").innerText = "";
         return;
     }
 
     cart.forEach((item,index)=>{
 
-        let sum = item.price * item.qty;
+        let price = Number(item.price || 0);
+        let qty = Number(item.qty || 0);
+
+        let sum = price * qty;
         total += sum;
 
         html += `
-        <div class="item">
+        <div style="display:flex;justify-content:space-between;padding:10px;border-bottom:1px dashed #ddd;align-items:center;">
 
-            <div class="name">
-                🛍 ${item.name}<br>
-                <small>${item.price} MMK</small>
+            <div style="text-align:left;">
+                🛍 ${item.name || "Item"}<br>
+                <small>${price} MMK</small>
             </div>
 
-            <div class="qty">
+            <div>
                 <button onclick="decrease(${index})">-</button>
-                ${item.qty}
+                ${qty}
                 <button onclick="increase(${index})">+</button>
             </div>
 
@@ -148,7 +153,7 @@ function renderCart(){
 
 /* ================= UPDATE ================= */
 function increase(i){
-    cart[i].qty++;
+    cart[i].qty = Number(cart[i].qty || 0) + 1;
     save();
 }
 
@@ -169,14 +174,17 @@ function save(){
 /* ================= COPY ORDER ================= */
 function copyOrder(){
 
-    let text = "🧾 NABI ORDER\n\n";
+    let text = "🧾 ORDER\n\n";
     let total = 0;
 
     cart.forEach(item=>{
-        let sum = item.price * item.qty;
+        let price = Number(item.price || 0);
+        let qty = Number(item.qty || 0);
+
+        let sum = price * qty;
         total += sum;
 
-        text += ${item.name} x${item.qty} = ${sum} MMK\n;
+        text += ${item.name} x${qty} = ${sum} MMK\n;
     });
 
     text += "\nTOTAL: " + total + " MMK";
@@ -188,6 +196,5 @@ function copyOrder(){
 renderCart();
 
 </script>
-
 </body>
 </html>
