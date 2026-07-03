@@ -15,7 +15,6 @@
             margin-top:20px;
         }
 
-        /* CART BOX */
         .cart-container{
             max-width:800px;
             margin:20px auto;
@@ -25,36 +24,12 @@
             overflow:hidden;
         }
 
-        /* header */
         .cart-header{
             background:linear-gradient(45deg,#ffb6c1,#ffd6e0);
             padding:15px;
             text-align:center;
             font-weight:bold;
             font-size:20px;
-        }
-
-        /* item */
-        .item{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:15px;
-            border-bottom:1px dashed #ddd;
-        }
-
-        .name{
-            flex:1;
-            text-align:left;
-        }
-
-        .qty button{
-            background:black;
-            color:white;
-            border:none;
-            padding:5px 10px;
-            border-radius:6px;
-            cursor:pointer;
         }
 
         .total{
@@ -64,7 +39,6 @@
             font-weight:bold;
         }
 
-        /* button */
         .copy-btn{
             display:block;
             margin:10px auto 20px;
@@ -90,7 +64,7 @@
 
 <div class="cart-container">
 
-    <div class="cart-header">🧾Order Voucher</div>
+    <div class="cart-header">🧾 Order Voucher</div>
 
     <div id="cart"></div>
 
@@ -104,7 +78,7 @@
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ================= SAFE RENDER ================= */
+/* ================= RENDER ================= */
 function renderCart(){
 
     cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -114,7 +88,7 @@ function renderCart(){
 
     if(cart.length === 0){
         document.getElementById("cart").innerHTML =
-        "<div style='padding:20px'>🛒 Cart is empty</div>";
+        "<div class='empty'>🛒 Cart is empty</div>";
         document.getElementById("total").innerText = "";
         return;
     }
@@ -128,7 +102,7 @@ function renderCart(){
         total += sum;
 
         html += `
-        <div style="display:flex;justify-content:space-between;padding:10px;border-bottom:1px dashed #ddd;align-items:center;">
+        <div style="display:flex;justify-content:space-between;padding:12px;border-bottom:1px dashed #ddd;align-items:center;">
 
             <div style="text-align:left;">
                 🛍 ${item.name || "Item"}<br>
@@ -196,5 +170,6 @@ function copyOrder(){
 renderCart();
 
 </script>
+
 </body>
 </html>
