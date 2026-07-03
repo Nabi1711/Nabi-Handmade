@@ -6,9 +6,8 @@
 
 <body style="font-family:Arial;text-align:center;">
 
-<h1>🧺 Your Cart</h1>
+<h1>🛒 Your Cart</h1>
 
-<!-- ❗️ ဒီ 2 ခု MUST -->
 <div id="cart"></div>
 <h2 id="total"></h2>
 
@@ -18,6 +17,7 @@
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+/* ================= CART RENDER ================= */
 function renderCart(){
 
     let html = "";
@@ -56,6 +56,7 @@ function renderCart(){
     document.getElementById("total").innerText = "Total: " + total + " MMK";
 }
 
+/* ================= UPDATE ================= */
 function increase(i){
     cart[i].qty++;
     save();
@@ -75,7 +76,7 @@ function save(){
     renderCart();
 }
 
-// 📋 copy order
+/* ================= COPY ORDER ================= */
 function copyOrder(){
 
     let text = "🧾 ORDER\n\n";
