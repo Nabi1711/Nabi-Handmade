@@ -1,45 +1,38 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function getCart(){
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
 
 /* 🛒 ADD TO CART */
 function addToCart(name, price){
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = getCart();
 
     let found = cart.find(item => item.name === name);
 
     if(found){
         found.qty++;
     }else{
-        cart.push({
-            name:name,
-            price:price,
-            qty:1
-        });
+        cart.push({name, price, qty:1});
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
-
-    console.log("cart updated:", cart);
 }
 
-/* 🔥 UPDATE CART COUNT */
+/* 🔥 CART COUNT (GLOBAL SAFE) */
 function updateCartCount(){
 
-    let data = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = getCart();
 
-    let count = 0;
+    let count = cart.reduce((sum, item)=> sum + item.qty, 0);
 
-    data.forEach(item=>{
-        count += item.qty;
-    });
-
-    let el = document.getElementById("cart-count");
-    if(el){
+    document.querySelectorAll("#cart-count").forEach(el=>{
         el.innerText = count;
-    }
+    });
 }
 
-/* INIT */
-updateCartCount();
+/* INIT ON EVERY PAGE */
+document.addEventListener("DOMContentLoaded", ()=>{
+    updateCartCount();
+});
