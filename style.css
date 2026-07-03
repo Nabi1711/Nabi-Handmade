@@ -9,8 +9,8 @@ body{
 .logo{
     width:80px !important;
     height:auto;
-    display:block;
-    margin:20px auto;
+    animation:glow2s infinite alternate;
+    margin-bottom:10px ;
 }
 
 /* ✨ soft glow background */
@@ -164,15 +164,40 @@ box-shadow:0 4px 12px rgba (0,0,0,0.3);
 /* 🌟 HERO SECTION */
 .hero{
     margin-top:10px;
-    padding:20px;
+    padding:40px 10px;
+}
+.hero-box{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    display:inline-block;
+    padding:25px 20px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    animation:float 4s ease-in-out infinite;
 }
 
+/* ✨ floating box */
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-6px);}
+    100%{transform:translateY(0px);}
+}
+
+/* ✨ glow effect */
+@keyframes glow{
+    from{filter:drop-shadow(0 0 5px pink);}
+    to{filter:drop-shadow(0 0 15px hotpink);}
+}
+
+/* text styles */
 .hero h1{
-    font-size:28px;
+    font-size:22px;
+    margin:5px 0;
     color:#444;
 }
 
+
 .hero p{
     font-size:20px;
-    color:#888;
+    color:#999;
 }
