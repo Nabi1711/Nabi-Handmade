@@ -1,3 +1,6 @@
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* ================= ADD TO CART ================= */
 function addToCart(name, price){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -12,19 +15,20 @@ function addToCart(name, price){
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartCount(); // 🔥 instant UI update
+    updateCartCount(); // instant update
 }
 
+/* ================= CART COUNT ================= */
 function updateCartCount(){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let count = cart.reduce((sum,item)=> sum + item.qty, 0);
+    let count = cart.reduce((sum,item)=> sum + (item.qty || 0), 0);
 
     document.querySelectorAll("#cart-count").forEach(el=>{
         el.innerText = count;
     });
 }
 
-/* 🔥 RUN ALWAYS */
-setInterval(updateCartCount, 300);
+/* run on page load */
+updateCartCount();
