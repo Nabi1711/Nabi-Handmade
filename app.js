@@ -1,32 +1,50 @@
-<body>
+/* ================= CART LOAD ================= */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    <div class="hero">
-        <div class="hero-box">
-            <img src="logo.png" class="logo">
-            <h1>Nabi Handmade Studio</h1>
-        </div>
-    </div>
+/* ================= ADD TO CART ================= */
+function addToCart(name, price){
 
-    <div class="container">
-        ...
-    </div>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    <a href="cart.html" class="cart-fixed">
-        🛒 Cart <span id="cart-count">0</span>
-    </a>
+    let found = cart.find(item => item.name === name);
 
-    <script src="app.js"></script>
-</body>
+    if(found){
+        found.qty++;
+    }else{
+        cart.push({
+            name: name,
+            price: Number(price),
+            qty: 1
+        });
+    }
 
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+}
+
+/* ================= UPDATE CART COUNT ================= */
 function updateCartCount(){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let count = cart.reduce((sum,item)=> sum + item.qty, 0);
+    let count = cart.reduce((sum,item)=>{
+        return sum + (item.qty || 0);
+    }, 0);
 
     let el = document.getElementById("cart-count");
 
-    if(!el) return;   // 🔥 IMPORTANT SAFETY
-
-    el.innerText = count;
+    if(el){
+        el.innerText = count;
+    }
 }
+
+/* ================= RUN ON PAGE LOAD ================= */
+document.addEventListener("DOMContentLoaded", function(){
+    updateCartCount();
+});
+
+/* ================= OPTIONAL: REALTIME SYNC ================= */
+window.addEventListener("storage", function(){
+    updateCartCount();
+});
