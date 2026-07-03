@@ -1,4 +1,3 @@
-/* ================= CART LOAD ================= */
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 /* ================= ADD TO CART ================= */
