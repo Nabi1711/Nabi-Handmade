@@ -1,7 +1,10 @@
-
-
-function addToCart(name, price){
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* 🛒 ADD TO CART */
+function addToCart(name, price){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
     let found = cart.find(item => item.name === name);
 
     if(found){
@@ -17,8 +20,11 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
+
+    console.log("cart updated:", cart);
 }
 
+/* 🔥 UPDATE CART COUNT */
 function updateCartCount(){
 
     let data = JSON.parse(localStorage.getItem("cart")) || [];
@@ -35,4 +41,5 @@ function updateCartCount(){
     }
 }
 
+/* INIT */
 updateCartCount();
