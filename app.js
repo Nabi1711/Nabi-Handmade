@@ -2,33 +2,29 @@ function addToCart(name, price){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push({
-        name: name,
-        price: price,
-        qty: 1
-    });
+    let found = cart.find(item => item.name === name);
+
+    if(found){
+        found.qty++;
+    }else{
+        cart.push({name, price, qty:1});
+    }
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartCount(); // 🔥 ADD THIS
-
-    alert("Added!");
+    updateCartCount(); // 🔥 instant UI update
 }
 
 function updateCartCount(){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let count = 0;
+    let count = cart.reduce((sum,item)=> sum + item.qty, 0);
 
-    cart.forEach(item=>{
-        count += item.qty;
-    });
-
-    let el = document.getElementById("cart-count");
-    if(el){
+    document.querySelectorAll("#cart-count").forEach(el=>{
         el.innerText = count;
-    }
+    });
 }
 
-updateCartCount(); // run on load
+/* 🔥 RUN ALWAYS */
+setInterval(updateCartCount, 300);
