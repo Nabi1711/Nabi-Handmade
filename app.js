@@ -1,38 +1,34 @@
-function getCart(){
-    return JSON.parse(localStorage.getItem("cart")) || [];
-}
-
-/* 🛒 ADD TO CART */
 function addToCart(name, price){
 
-    let cart = getCart();
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let found = cart.find(item => item.name === name);
-
-    if(found){
-        found.qty++;
-    }else{
-        cart.push({name, price, qty:1});
-    }
+    cart.push({
+        name: name,
+        price: price,
+        qty: 1
+    });
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartCount();
+    updateCartCount(); // 🔥 ADD THIS
+
+    alert("Added!");
 }
 
-/* 🔥 CART COUNT (GLOBAL SAFE) */
 function updateCartCount(){
 
-    let cart = getCart();
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let count = cart.reduce((sum, item)=> sum + item.qty, 0);
+    let count = 0;
 
-    document.querySelectorAll("#cart-count").forEach(el=>{
-        el.innerText = count;
+    cart.forEach(item=>{
+        count += item.qty;
     });
+
+    let el = document.getElementById("cart-count");
+    if(el){
+        el.innerText = count;
+    }
 }
 
-/* INIT ON EVERY PAGE */
-document.addEventListener("DOMContentLoaded", ()=>{
-    updateCartCount();
-});
+updateCartCount(); // run on load
