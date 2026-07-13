@@ -1,7 +1,7 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 /* ================= ADD ================= */
-function addToCart(name, price){
+function addToCart(name, price,image){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -13,6 +13,7 @@ function addToCart(name, price){
         cart.push({
             name,
             price: Number(price),
+            image:image,
             qty: 1
         });
     }
