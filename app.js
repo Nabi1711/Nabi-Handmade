@@ -21,8 +21,6 @@ function addToCart(name, price, image){
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
-
-alert("Added to Cart!);
       }
 /* ================= COUNT ================= */
 function updateCartCount(){
