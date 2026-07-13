@@ -1,7 +1,7 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 /* ================= ADD ================= */
-function addToCart(name, price,image){
+function addToCart(name, price, image){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -21,8 +21,9 @@ function addToCart(name, price,image){
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
-}
 
+alert("Added to Cart!);
+      }
 /* ================= COUNT ================= */
 function updateCartCount(){
 
