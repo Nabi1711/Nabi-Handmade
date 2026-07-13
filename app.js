@@ -44,3 +44,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
 /* ================= CROSS PAGE SYNC ================= */
 window.addEventListener("storage", updateCartCount);
 window.addEventListener("focus", updateCartCount);
+
+
+
+/* ================= IMAGE ZOOM ================= */
+
+function openZoom(img){
+
+    document.getElementById("lightbox").style.display = "flex";
+
+    document.getElementById("lightboxImg").src = img.src;
+
+}
+
+
+function closeZoom(){
+
+    document.getElementById("lightbox").style.display = "none";
+
+}
