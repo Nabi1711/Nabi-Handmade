@@ -106,9 +106,19 @@ function renderCart(){
         html += `
         <div class="item">
 
+<div style="display:flex;align-items:center;gap:15px;text-align:left;">
+
+<img src="${item.image}" 
+style="
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:12px;
+">
             <div>
-                🛍 ${item.name}<br>
+               🧾  ${item.name}<br>
                 <small>${price} MMK</small>
+            </div>
             </div>
 
             <div>
