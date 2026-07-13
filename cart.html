@@ -186,7 +186,7 @@ function copyOrder(){
         text += '${item.name} x${qty} = ${sum} MMK\n';
     });
 
-    text += \nTOTAL: ${total} MMK;
+    text += '\nTOTAL: ${total} MMK';
 
     navigator.clipboard.writeText(text)
     .then(()=>{
