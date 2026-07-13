@@ -51,9 +51,11 @@ window.addEventListener("focus", updateCartCount);
 
 function openZoom(img){
 
-    document.getElementById("lightbox").style.display = "flex";
+    let box = document.getElementById("lightbox");
+    let image = document.getElementById("lightboxImg");
 
-    document.getElementById("lightboxImg").src = img.src;
+    box.style.display = "flex";
+    image.src = img.src;
 
 }
 
@@ -63,3 +65,4 @@ function closeZoom(){
     document.getElementById("lightbox").style.display = "none";
 
 }
+
