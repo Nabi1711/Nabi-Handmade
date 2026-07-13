@@ -162,6 +162,7 @@ function dec(i){
 }
 
 /* ================= COPY ORDER ================= */
+/* ================= COPY ORDER ================= */
 function copyOrder(){
 
     let cart = getCart();
@@ -182,16 +183,19 @@ function copyOrder(){
         let sum = price * qty;
         total += sum;
 
-        text += '${item.name} x${qty} = ${sum} MMK\n';
+        text += ${item.name} x${qty} = ${sum} MMK\n;
     });
 
-    text += '\nTOTAL: ${total} MMK';
+    text += \nTOTAL: ${total} MMK;
 
     navigator.clipboard.writeText(text)
-    .then(()=> alert("Copied!"))
-    .catch(()=> alert("Copy failed"));
+    .then(()=>{
+        alert("Copied!");
+    })
+    .catch(()=>{
+        alert("Copy failed");
+    });
 }
-
 /* ================= INIT ================= */
 renderCart();
 
