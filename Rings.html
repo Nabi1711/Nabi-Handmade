@@ -1,35 +1,366 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rings</title>
+    <title>Necklaces</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    font-family: Arial;
+    background:#f5f5f5;
+    text-align:center;
+    margin:0;
+}
+
+/* container */
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+/* product card */
+.product{
+    background:white;
+    width:170px;
+    margin:10px;
+    padding:10px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    position:relative;
+}
+
+/* image */
+.product img{
+    width:150px;
+    cursor:pointer;
+    transition:0.3s;
+    border-radius:8px;
+}
+
+.product img:hover{
+    transform:scale(1.05);
+}
+
+/* badge */
+.badge{
+    position:absolute;
+    top:5px;
+    right:5px;
+    background:green;
+    color:white;
+    padding:3px 6px;
+    font-size:10px;
+    border-radius:5px;
+}
+
+/* button */
+button{
+    background:black;
+    color:white;
+    border:none;
+    padding:8px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#333;
+}
+
+/* cart button */
+.cart-fixed{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:black;
+    color:white;
+    padding:12px 15px;
+    border-radius:50px;
+    text-decoration:none;
+    z-index:9999;
+}
+
+/* lightbox */
+#lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+#lightbox img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+@media(max-width:768px){
+
+    .container{
+        display:grid;
+        grid-template-columns:repeat(2, 1fr);
+        gap:10px;
+        padding:10px;
+    }
+
+
+    .product{
+        width:auto;
+        margin:0;
+        padding:8px;
+    }
+
+
+    .product img{
+        width:100%;
+        height:120px;
+        object-fit:cover;
+    }
+
+}
+    
+</style>
+
 </head>
+
 <body>
 
-<h1>💎 Rings Collection</h1>
+<h1> Necklaces Collection</h1>
 
-<div>
-    <img src="bracelet1.jpg" width="120">
-    <p>✨ Half Crystal Bracelet</p>
-    <p>Price: 7000 MMK</p>
+<div class="container">
 
-    <button onclick="addToCart()">➕ Add to Cart</button>
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace1.jpg" onclick="openZoom(this)">
+    <p>Maple Leaf Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Maple Leaf Necklace',7500)">➕ Add</button>
+</div>
+    
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace2.jpg" onclick="openZoom(this)">
+    <p>Half Moon Necklace</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Half Moon Necklace',7000)">➕ Add</button>
 </div>
 
-<hr>
 
-<div>
-    <img src="bracelet2.jpg" width="120">
-    <p>💖 Butterfly Bracelet</p>
-    <p>Price: 5500 MMK</p>
-
-    <button onclick="addToCart()">➕ Add to Cart</button>
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace3.jpg" onclick="openZoom(this)">
+    <p>Leaf Necklace</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Leaf Necklace',7000)">➕ Add</button>
 </div>
 
-<script>
-function addToCart(){
-    alert("🛒 Added to cart!");
-}
-</script>
 
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace4.jpg" onclick="openZoom(this)">
+    <p>Butterfly Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Butterfly',7500)">➕ Add</button>
+</div>
+
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace5.jpg" onclick="openZoom(this)">
+    <p>Starfish Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Starfish Necklace',7500)">➕ Add</button>
+</div>
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace6.jpg" onclick="openZoom(this)">
+    <p>Mermaid Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('Mermaid Necklace',7500)">➕ Add</button>
+</div>
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace7.jpg" onclick="openZoom(this)>"
+    <p>Star Necklace</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Star Necklace',7000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace8.jpg" onclick="openZoom(this)">
+    <p>Fairy Necklace 1</p>
+    <p>18000 MMK</p>
+    <button onclick="addToCart('Faiy Necklace 1',18000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace9.jpg" onclick="openZoom(this)">
+    <p>Fairy Necklace 2</p>
+    <p>18000 MMK</p>
+    <button onclick="addToCart('Fairy Necklace 2',18000)">➕ Add</button>
+</div>
+
+
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace10.jpg" onclick="openZoom(this)">
+    <p>Fairy Necklace 3</p>
+    <p>18000 MMK</p>
+    <button onclick="addToCart('Fairy Necklace 3',18000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace11.jpg" onclick="openZoom(this)">
+    <p>Chinese Coin Necklace</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Flowers with Butterfly',7000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace12.jpg" onclick="openZoom(this)">
+    <p>Evil Eye Necklace</p>
+    <p>4000 MMK</p>
+    <button onclick="addToCart('Evil Eye Necklace',4000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace13.jpg" onclick="openZoom(this)">
+    <p>Sunflower Necklace</p>
+    <p>11000 MMK</p>
+    <button onclick="addToCart('Sunflower Necklace',11000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace14.jpg" onclick="openZoom(this)">
+    <p>Daisy Necklace</p>
+    <p>11000 MMK</p>
+    <button onclick="addToCart('Daisy Necklace',11000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace15.jpg" onclick="openZoom(this)">
+    <p>Tiny Beads Necklace</p>
+    <p>6000 MMK</p>
+    <button onclick="addToCart('Tiny Beads Necklace',6000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace16.jpg" onclick="openZoom(this)">
+    <p>Smile Bead Necklace</p>
+    <p>7000 MMK</p>
+    <button onclick="addToCart('Smile Bead Necklace',7000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace17.jpg" onclick="openZoom(this)">
+    <p> Ying Yang Necklace</p>
+    <p>8000 MMK</p>
+    <button onclick="addToCart('Ying Yang Necklace',8000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace18.jpg" onclick="openZoom(this)">
+    <p>Quartz bead Necklace</p>
+    <p>15000 MMK</p>
+    <button onclick="addToCart('Quartz bead Necklace',15000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace19.jpg" onclick="openZoom(this)">
+    <p>Big Glass Butterfly</p>
+    <p>8000 MMK</p>
+    <button onclick="addToCart('Big Glass Butterfly',8000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace20.jpg" onclick="openZoom(this)">
+    <p>Pearl Mermaid Necklace</p>
+    <p>8500 MMK</p>
+    <button onclick="addToCart('Pearl Mermaid Necklace',8500)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace21.jpg" onclick="openZoom(this)">
+    <p>Rose Quartz Necklace</p>
+    <p>20000 MMK</p>
+    <button onclick="addToCart('Rose Quartz Necklace',20000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace22.jpg" onclick="openZoom(this)">
+    <p>Bell Flower Necklace </p>
+    <p>15000 MMK</p>
+    <button onclick="addToCart('Bell Flower Necklace',15000)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace23.jpg" onclick="openZoom(this)">
+    <p>Flowers Necklace</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Flowers Necklace',13000)">➕ Add</button>
+</div>
+    
+    <div class="product">
+    <div class="badge">HOT</div>
+    <img src="necklace24.jpg" onclick="openZoom(this)">
+    <p>Double Quartz Stone Necklace</p>
+    <p>13000 MMK</p>
+    <button onclick="addToCart('Double Quartz Stone Necklace',13000)">➕ Add</button>
+</div>
+    
+<div class="product">
+    <div class="badge">NEW</div>
+    <img src="necklace25.jpg" onclick="openZoom(this)">
+    <p>White Starfish Necklace</p>
+    <p>7500 MMK</p>
+    <button onclick="addToCart('White Starfish Necklace',7500)">➕ Add</button>
+</div>
+
+<div class="product">
+    <div class="badge">NEW</div>
+    <img src="necklace25.jpg" onclick="openZoom(this)">
+    <p>Tiny crystal bead Necklace</p>
+    <p>8500 MMK</p>
+    <button onclick="addToCart('Tiny Crystal Necklace',8500)">➕ Add</button>
+</div>
+
+    
+</div>
+    
+<a href="cart.html" class="cart-fixed">
+    🛒 Cart <span id="cart-count">0</span>
+</a>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeZoom()">
+    <img id="lightboxImg">
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
